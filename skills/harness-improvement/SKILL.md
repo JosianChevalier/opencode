@@ -21,6 +21,10 @@ Never require the user to remind you — surface every noted correction, even mi
 
 Additivity bias is the main threat. Before adding anything new: can an existing rule, skill, or AGENTS.md be updated instead? Stale or contradictory instruction → edit or remove the source. Full argument: @rationale/context-economics.md
 
+## Layer 1 Is Terse
+
+Per token economics and Words Are Attractors (`@rationale/context-economics.md`, `@rationale/attractors.md`), compress layer-1 guidance: carry intent in the fewest precise tokens; move rationale to `rationale/`.
+
 ## Context Architecture (opencode)
 
 | Axis | Mechanism | Location | Loaded |

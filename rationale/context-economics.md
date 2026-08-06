@@ -6,6 +6,10 @@ Context is the scarce resource. Every token loaded is budget spent and precision
 
 Under pressure, the cheap local move is to *add*: a new file, a new rule, a new caveat. Each addition costs forever (loaded in every relevant session), compounds (more files → more contradictions → more meta-rules to arbitrate), and is never garbage-collected on its own. Hence **rework > adding**: the default fix is editing or deleting existing material; creating something new requires demonstrating no existing home fits.
 
+## One canonical home per fact
+
+Every piece of knowledge has exactly one home; anything else may only point to it, never copy it (Pierrain: "pointers, not copies"). Duplicates diverge inevitably, and reconciling diverging sources costs more than the copy ever saved. This is why the harness has no memory files, why completed plan stages collapse to pointers at commits, and why rationales reference each other instead of restating.
+
 ## Cohesion
 
 One concept per rule file, cohesive files. The payoff is at harness-improvement time: a fix should require reading and editing exactly one file. Monoliths force loading everything to change anything — the exact failure the architecture exists to prevent.

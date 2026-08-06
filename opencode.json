@@ -1,4 +1,42 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-rules@latest"]
+  "plugin": ["opencode-rules@latest"],
+  "permission": {
+    "edit": {
+      "*": "allow",
+      "/mnt/opencode-host/**": "ask"
+    },
+    "external_directory": {
+      "*": "ask",
+      "/mnt/opencode-host/**": "allow"
+    },
+    "bash": {
+      "*": "allow",
+      "sudo*": "deny",
+      "su": "deny",
+      "su *": "deny",
+      "ssh*": "deny",
+      "scp*": "deny",
+      "kubectl*": "deny",
+      "helm*": "deny",
+      "terraform*": "deny",
+      "tofu*": "deny",
+      "ansible*": "deny",
+      "ansible-playbook*": "deny",
+      "pulumi*": "deny",
+      "aws*": "deny",
+      "az": "deny",
+      "az *": "deny",
+      "gcloud*": "deny",
+      "gsutil*": "deny",
+      "bq": "deny",
+      "bq *": "deny",
+      "ibmcloud*": "deny",
+      "oci": "deny",
+      "oci *": "deny",
+      "doctl*": "deny",
+      "rm -rf /*": "deny",
+      "rm -fr /*": "deny"
+    }
+  }
 }
