@@ -30,13 +30,50 @@ _opencode_devcontainer_port() {
   print -r -- "${port%%:4096}"
 }
 
+_opencode_devcontainer_reload_server() {
+  local root port url attempt
+
+  root="$1"
+  port="$2"
+  url="http://127.0.0.1:$port/doc"
+
+  if command curl --connect-timeout 1 --max-time 2 -sf "$url" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  command devcontainer exec --workspace-folder "$root" sh .devcontainer/bin/opencode-serve || return
+
+  attempt=0
+  while [ "$attempt" -lt 10 ]; do
+    if command curl --connect-timeout 1 --max-time 2 -sf "$url" >/dev/null 2>&1; then
+      return 0
+    fi
+
+    attempt=$((attempt + 1))
+    sleep 1
+  done
+
+  print -ru2 -- "OpenCode server did not answer $url after reload"
+  return 1
+}
+
 opencode-attach() {
   local root port
 
   root=$(_opencode_devcontainer_root) || return
   port=$(_opencode_devcontainer_port "$root") || return
+  _opencode_devcontainer_reload_server "$root" "$port" || return
 
   command opencode attach "http://127.0.0.1:$port" "$@"
+}
+
+opencode-reload() {
+  local root port
+
+  root=$(_opencode_devcontainer_root) || return
+  port=$(_opencode_devcontainer_port "$root") || return
+
+  _opencode_devcontainer_reload_server "$root" "$port"
 }
 
 opencode-init() {
