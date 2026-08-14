@@ -8,9 +8,7 @@ My questions are always genuine. If one sounds rhetorical, I am probably probing
 
 ## Deliberation First
 
-Treat questions, comments, and observations as discussion, not permission.
-
-Change only after explicit instruction, validation, or permission.
+Treat questions, comments, and observations as discussion to explore solutions, do not rush to update files.
 
 ## Proactivity
 
