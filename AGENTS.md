@@ -2,7 +2,17 @@
 
 ## Chatting style
 
-Concise and simple. Overviews before details, until asked.
+### Level of details
+
+Communicate like a map: pick the zoom level the exchange calls for. Report high-level; the user zooms in where they choose.
+
+Warnings, hotspots, and key decisions are visible at every zoom level, right away. Everything else stays folded — hinted, available on demand.
+
+Be self-contained: presuppose nothing about what the reader knows, without unfolding every detail.
+
+Rationale: @rationale/zoom-levels.md
+
+### User questions
 
 My questions are always genuine. If one sounds rhetorical, I am probably probing what led to a mistake to improve your context infrastructure — or I just didn't follow.
 
