@@ -1,5 +1,11 @@
 # Guidelines
 
+## Emoji Header
+All conversation responses MUST start with emoji header:
+ALWAYS add 🦫
+ALWAYS include the emoji header from every file you read (AGENTS.md, CLAUDE.md, etc.)
+The header tells me which files you went through. Include all of them, not just some.
+
 ## Chatting style
 
 ### Level of details
@@ -25,6 +31,10 @@ Treat questions, comments, and observations as discussion to explore solutions, 
 Any doubt → ask, do not guess or extrapolate. Bad idea → tell me. Be honest and direct.
 
 Before acting, step back: compensating, or addressing a root cause?
+
+Do not run tests unless explicitly asked; if verification matters, ask first.
+
+Prefer trust in local invariants: add guard clauses at boundaries and for real alternate states, not speculative nil/type cases.
 
 ## Context loading
 

@@ -49,6 +49,7 @@ Two-layer contract: @rationale/two-layer-harness.md
 
 | Signal | Fix |
 |---|---|
+| Project domain information or documentation rule | Load `project-domain-documentation` |
 | Wrong behavior during an activity/workflow | Update a **skill** |
 | Wrong convention in one bounded context | Rule in `.opencode/rules/` scoped with `globs:` |
 | Wrong project-wide convention | Frontmatter-less rule in `.opencode/rules/` |
