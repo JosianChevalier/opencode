@@ -29,13 +29,15 @@ Per token economics and Words Are Attractors (`@rationale/context-economics.md`,
 
 | Axis | Mechanism | Location | Loaded |
 |---|---|---|---|
-| **Personal** (all sessions) | Global `AGENTS.md` | `~/.config/opencode/AGENTS.md` | always |
+| **Personal** (all sessions) | Global `AGENTS.md` | `/mnt/opencode-host/AGENTS.md` (`~/.config/opencode` replacement) | always |
 | **Universal** (project-wide) | Frontmatter-less rules | `.opencode/rules/*.md`, no frontmatter | always (plugin injects unconditionally) |
 | **Spatial** (bounded contexts) | Glob-scoped rules | `.opencode/rules/*.md` with `globs:` frontmatter | deterministically, when a touched file matches |
-| **Temporal** (activities, workflows) | Skills, composed into **sub-agents** | `skills/<name>/` and `agents/<name>.md`, global (`~/.config/opencode/`) or project (`.opencode/`) | per workflow step, deterministically via the step's sub-agent |
+| **Temporal** (activities, workflows) | Skills, composed into **sub-agents** | `skills/<name>/` and `agents/<name>.md`, global (`/mnt/opencode-host/`) or project (`.opencode/`) | per workflow step, deterministically via the step's sub-agent |
 | **Epistemic** (why & how) | Rationale docs | `rationale/*.md` (global), `.opencode/rationale/*.md` (project) | only when improving the harness |
 
-**Rule injection is deterministic** via the `opencode-rules` plugin (declared in `opencode.json` and `tui.json`): it captures file paths from tool calls (`tool.execute.before`), matches them against each rule's `globs:`, and injects matching rules into the system prompt — surviving compaction. The TUI sidebar shows active/inactive rules live. Never remove the plugin entries or revert to prose-based loading instructions.
+**Rule injection is deterministic** via the `opencode-rules` plugin (declared in global `opencode.json` and `tui.json`): it captures file paths from tool calls (`tool.execute.before`), matches them against each rule's `globs:`, and injects matching rules into the system prompt — surviving compaction. The TUI sidebar shows active/inactive rules live. Never remove the plugin entries or revert to prose-based loading instructions.
+
+Devcontainer topology: `/mnt/opencode-host` is the editable global/user harness and replaces the normal `~/.config/opencode` role because the image-baked config is hardened. Repos may also have project-local `.opencode/`; currently the env-var-loaded global config can take precedence over project config, so diagnose project-level config misses as precedence issues before changing rules.
 
 Reference direction is rule → context: each rule declares where it applies. Sharing is free — one file, N globs — so there is no inline-vs-materialized distinction and no per-subdomain AGENTS.md wiring. Keep `rationale/` outside `rules/`, or it gets injected.
 

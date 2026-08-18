@@ -30,7 +30,12 @@ Before acting, step back: compensating, or addressing a root cause?
 
 No memory files — context stays explicit, versioned, controlled.
 
-For durable OpenCode harness updates in this devcontainer, edit `/mnt/opencode-host`; `/home/node/.config/opencode` is the runtime copy populated from that mount at container start.
+There are two OpenCode harness levels in this devcontainer:
+
+- **Global/user level**: edit `/mnt/opencode-host`. It replaces the normal `~/.config/opencode` role because the image-baked `/home/node/.config/opencode` is hardened and not extensible.
+- **Project level**: edit the repo's `.opencode/` for project-local rules, skills, agents, and config.
+
+Current caveat: the global level is loaded through an environment variable, so it can override project-level `.opencode/` config instead of the project overriding global defaults. Account for that precedence when diagnosing missing project rules or config.
 
 `rationale/` files and `Rationale: @...` refs are for harness improvement only — never load them during normal work.
 
