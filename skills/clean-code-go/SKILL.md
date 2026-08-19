@@ -1,6 +1,6 @@
 ---
 name: clean-code-go
-description: Use when writing or reviewing Go code for clean-code feedback about pure functions, local copy updates, and defensive checks. Use ONLY for these Go code-shape concerns.
+description: Use when writing or reviewing Go code for clean-code feedback about pure functions, local copy updates, defensive checks, and simple branch shape. Use ONLY for these Go code-shape concerns.
 ---
 
 # Clean Code (Go)
@@ -42,3 +42,7 @@ Guard real runtime alternates and external data shapes.
 Keep checks for cache misses, missing template form schemas, and malformed JSON-like schema fields.
 
 Treat impossible wiring states as programming bugs, not silent fallbacks.
+
+## Branch Shape
+
+Avoid `continue`; when it seems needed, rethink the function and look for a missing level of abstraction.
